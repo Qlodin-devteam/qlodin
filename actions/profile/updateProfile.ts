@@ -37,14 +37,14 @@ export async function updateProfileAction(
   );
   if (error || !res) return { error: "Connection failed. Please try again" };
 
-  debugLog(res);
+  debugLog({res});
 
   if (res.status === 200) {
     revalidatePath(__paths.user);
     return {
       success: "Profile updated successfully",
       data: {
-        user: res.data.user,
+        user: res.data?.user,
       },
     };
   } else

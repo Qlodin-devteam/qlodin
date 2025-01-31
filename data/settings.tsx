@@ -3,16 +3,19 @@ import { __paths } from "@/utils";
 import { ReactNode } from "react";
 import { BsFillCreditCardFill } from "react-icons/bs";
 import { FaBell, FaCircleMinus, FaUser } from "react-icons/fa6";
+import { FaSignOutAlt } from "react-icons/fa";
 import { IoMdInformationCircle, IoMdLock } from "react-icons/io";
 import { LuEye } from "react-icons/lu";
 import { BiSolidNotification } from "react-icons/bi";
 import { CgRename } from "react-icons/cg";
 import { MdEmail } from "react-icons/md";
+import { RiDeleteBin3Fill } from "react-icons/ri";
 
 type SettingItem = {
   title: string;
   icon: ReactNode;
   link: string;
+  isDangerous?: boolean;
 };
 
 type SettingGroup = {
@@ -102,6 +105,21 @@ const securitySettings: SettingItem[] = [
   },
 ];
 
+const dangerSettings: SettingItem[] = [
+  {
+    title: "Sign Out",
+    icon: <FaSignOutAlt />,
+    link: __paths.signOut,
+    isDangerous: true,
+  },
+  {
+    title: "Account Deletion",
+    icon: <RiDeleteBin3Fill />,
+    link: __paths.userSettingsProfile,
+    isDangerous: true,
+  },
+];
+
 export const USER_SETTINGS: SettingGroup[] = [
   {
     title: "Account Settings",
@@ -118,5 +136,9 @@ export const USER_SETTINGS: SettingGroup[] = [
   {
     title: "Security Settings",
     items: securitySettings,
+  },
+  {
+    title: "",
+    items: dangerSettings,
   },
 ];

@@ -47,16 +47,27 @@ export default function MyProfileView() {
           </Link>
         </div>
         <div className="flex gap-2">
-          <button className={cn("btn-black max-h-10", "!py-1")}>
+          <Link
+            href={__paths.userSettingsProfile}
+            className={cn("btn-black max-h-10", "!py-1")}
+          >
             Edit Profile
-          </button>
+          </Link>
           <Link href={__paths.userSettings} className="max-md:hidden text-3xl">
             <AppIcons.settings />
           </Link>
         </div>
         <p className="text-sm md:text-base line-clamp-4 text-neutral-600">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse eos
-          quaerat repudiandae cum qui optio aperiam id ut sunt quo?
+          {user?.bio ? (
+            user.bio
+          ) : (
+            <Link
+              href={__paths.userSettingsProfile}
+              className="btn-black-border !w-fit !px-4 !py-1"
+            >
+              add bio
+            </Link>
+          )}
         </p>
       </div>
       <div className="w-5/12 lg:w-4/12 flex-shrink-0 flex flex-col justify-center overflow-hidden">

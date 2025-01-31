@@ -1,6 +1,6 @@
 "use client";
 
-import { useGlobalStore } from "@/stores";
+import { useGlobalStore, useUserStore } from "@/stores";
 import { __paths } from "@/utils";
 import { AppIcons } from "../icons/AppIcons";
 import MainLayoutSidebarButton, {
@@ -14,6 +14,7 @@ import { useWindowSize } from "react-use";
 import { FaCircleUser } from "react-icons/fa6";
 
 export default function MainLayoutSidebar() {
+  const user = useUserStore((s) => s.user);
   const isExpanded = useGlobalStore((s) => s.mainSidebarOpen);
   const { width: vw } = useWindowSize();
 
@@ -51,11 +52,11 @@ export default function MainLayoutSidebar() {
                   href={__paths.user}
                   icon={
                     <UserAvatar
-                      src="/images/person.png"
+                      src={user?.profilePicture}
                       height={30}
                       width={30}
                       className="overflow-hidden border-white"
-                      fallbackLabel="A"
+                      fallbackLabel={user?.userName}
                     />
                   }
                 />

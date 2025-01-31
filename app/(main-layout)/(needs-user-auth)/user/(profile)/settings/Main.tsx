@@ -3,10 +3,8 @@
 import { AppInput } from "@/components/formComponents";
 import { SettingListTile } from "@/components/settings";
 import { USER_SETTINGS } from "@/data/settings";
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { FaCaretRight } from "react-icons/fa6";
 
 export default function SettingsMain() {
   const [keyword, setKeyword] = useState("");
@@ -34,7 +32,12 @@ export default function SettingsMain() {
           </h3>
           <div className="flex flex-col items-center justify-between py-2 px-3 rounded-md bg-white">
             {filteredSettings.map((item, index) => (
-              <SettingListTile href={item.link} key={index} prefix={item.icon}>
+              <SettingListTile
+                href={item.link}
+                key={index}
+                prefix={item.icon}
+                isDangerous={item.isDangerous}
+              >
                 {item.title}
               </SettingListTile>
             ))}
@@ -51,6 +54,7 @@ export default function SettingsMain() {
                     href={item.link}
                     key={index}
                     prefix={item.icon}
+                    isDangerous={item.isDangerous}
                   >
                     {item.title}
                   </SettingListTile>

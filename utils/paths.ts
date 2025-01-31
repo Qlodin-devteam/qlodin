@@ -12,6 +12,7 @@ export const __paths = {
   privacyPolicy: "/privacy-policy",
 
   // auth
+  signOut: "/sign-out",
   signIn: "/sign-in",
   signUp: "/sign-up",
   signUpVerifyEmail: "/sign-up/verify",

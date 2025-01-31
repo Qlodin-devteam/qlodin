@@ -14,7 +14,7 @@ export function UserAvatar({
     >
       <AvatarImage {...props} />
       {fallbackLabel && (
-        <AvatarFallback>
+        <AvatarFallback className="bg-dark-50">
           {(fallbackLabel.charAt(0) ?? "?").toUpperCase()}
         </AvatarFallback>
       )}
